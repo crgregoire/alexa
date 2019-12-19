@@ -1,10 +1,43 @@
 package alexa
 
+// Modified version of Arien Malec's work
+// https://github.com/arienmalec/alexa-go
+// https://medium.com/@amalec/alexa-skills-with-go-54db0c21e758
+
 const (
-	HelpIntent   = "AMAZON.HelpIntent"
-	CancelIntent = "AMAZON.CancelIntent"
-	StopIntent   = "AMAZON.StopIntent"
+	HelpIntent     = "AMAZON.HelpIntent"
+	CancelIntent   = "AMAZON.CancelIntent"
+	StopIntent     = "AMAZON.StopIntent"
+	FallbackIntent = "AMAZON.FallbackIntent"
 )
+
+const (
+	LocaleItalian           = "it-IT"
+	LocaleGerman            = "de-DE"
+	LocaleAustralianEnglish = "en-AU"
+	LocaleCanadianEnglish   = "en-CA"
+	LocaleBritishEnglish    = "en-GB"
+	LocaleIndianEnglish     = "en-IN"
+	LocaleAmericanEnglish   = "en-US"
+	LocaleJapanese          = "ja-JP"
+)
+
+func IsEnglish(locale string) bool {
+	switch locale {
+	case LocaleAmericanEnglish:
+		return true
+	case LocaleIndianEnglish:
+		return true
+	case LocaleBritishEnglish:
+		return true
+	case LocaleCanadianEnglish:
+		return true
+	case LocaleAustralianEnglish:
+		return true
+	default:
+		return false
+	}
+}
 
 type Request struct {
 	Version string  `json:"version"`
