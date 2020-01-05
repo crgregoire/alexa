@@ -21,6 +21,23 @@ func NewSimpleResponse(title string, text string) Response {
 	return r
 }
 
+func NewLinkAccountResponse() Response {
+	r := Response{
+		Version: "1.0",
+		Body: ResBody{
+			OutputSpeech: &Payload{
+				Type: "PlainText",
+				Text: "You must have a Tespo Account to use this skill and dispense a serving. Please use the Alexa app to link your Amazon account with your Tespo Account.",
+			},
+			Card: &Payload{
+				Type:    "LinkAccount",
+			},
+			ShouldEndSession: true,
+		},
+	}
+	return r
+}
+
 type Response struct {
 	Version           string                 `json:"version"`
 	SessionAttributes map[string]interface{} `json:"sessionAttributes,omitempty"`
